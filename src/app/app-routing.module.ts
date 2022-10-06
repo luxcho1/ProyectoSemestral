@@ -33,6 +33,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/page404/page404.module').then( m => m.Page404PageModule)
   },
   {
+    path: 'usuario',
+    loadChildren: () => import('./pages/usuario/usuario.module').then( m => m.UsuarioPageModule)
+  },
+  {
+    path: 'administrador',
+    loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'page404'
   }

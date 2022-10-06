@@ -47,7 +47,6 @@ export class LoginPage implements OnInit {
   ingresar(){
     if(this.validateModel(this.user)){
       this.presentToast('Bienvenido!!!');
-      this.route.navigate(['/home']);
     }
     else{
       this.presentToast("Falta: " + this.field);
@@ -61,7 +60,17 @@ export class LoginPage implements OnInit {
         return false;
       }
     }
-    return true;
+    if (value == 'admin'){
+      this.field = 'Bienvenido admin';
+      this.route.navigate(['/administrador']);
+      return true;
+    }
+    else{
+      this.field = 'Bienvenido Usuario';
+      this.route.navigate(['/usuario']);
+      return true;
+    }
+
   }
 
   async presentToast(message: string, duration?: number){
