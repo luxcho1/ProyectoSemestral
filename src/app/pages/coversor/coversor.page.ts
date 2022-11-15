@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MindicadorclService } from 'src/app/services/mindicadorcl.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-coversor',
@@ -9,9 +11,25 @@ export class CoversorPage implements OnInit {
 
   pageTitle = 'Conversor';
   isNotHome = true;
-  constructor() { }
+  listadoDatos:any = [];
 
-  ngOnInit() {
+  
+
+  constructor(private mindicadorclService:MindicadorclService) { }
+
+  ngOnInit(): void {
+    this.cargarDatosConvertidor()
   }
 
+  cargarDatosConvertidor(){
+    this.mindicadorclService.obtenerListadoConvertidor()
+    .then(respuesta => {
+      this.listadoDatos = [respuesta.uf,respuesta.dolar,respuesta.euro];
+      console.log(this.listadoDatos);
+    },
+    (err) => {
+      console.log(err);
+    });
+  }
+  
 }

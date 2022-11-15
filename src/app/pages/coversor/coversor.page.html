@@ -1,7 +1,13 @@
 <app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
 
-<ion-content>
-    <ion-button [routerLink]="['/home']" shape="block">Haz click aqui!!</ion-button>
-
-</ion-content>
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let dato of listadoDatos">
+      <ion-label>
+        <h3>{{dato.codigo}}</h3>
+        <h5>{{dato.valor}}</h5>
+      </ion-label>
+     
+    </ion-item> 
+  </ion-list>
