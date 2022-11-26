@@ -41,9 +41,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/administrador/administrador.module').then( m => m.AdministradorPageModule)
   },
   {
+    path: 'clima-geolocalizacion',
+    loadChildren: () => import('./pages/clima-geolocalizacion/clima-geolocalizacion.module').then( m => m.ClimaGeolocalizacionPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'page404'
   }
+
 ];
 
 @NgModule({

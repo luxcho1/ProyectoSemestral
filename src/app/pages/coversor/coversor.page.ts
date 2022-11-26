@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MindicadorclService } from 'src/app/services/mindicadorcl.service';
+import { MindicadorclService } from 'src/app/services/mindicador/mindicadorcl.service';
 import { Observable } from 'rxjs';
 
 @Component({
