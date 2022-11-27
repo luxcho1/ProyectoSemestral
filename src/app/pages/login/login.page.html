@@ -29,5 +29,13 @@
           </ion-item>
       </ion-card-content>
       <ion-button shape="block" (click)="ingresar()">Login</ion-button>
+      <ion-button shape="block" [routerLink]="['/crear-conductor']" >Crear Cuenta</ion-button>
+      
   </ion-card>
 </ion-content>
+
+
+
+<ion-button color="success" [routerLink]="['/login']">
+    <ion-icon name="log-in-outline"></ion-icon>
+  </ion-button>

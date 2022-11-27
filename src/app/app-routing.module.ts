@@ -45,9 +45,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/clima-geolocalizacion/clima-geolocalizacion.module').then( m => m.ClimaGeolocalizacionPageModule)
   },
   {
+    path: 'crear-conductor',
+    loadChildren: () => import('./pages/crear-conductor/crear-conductor.module').then( m => m.CrearConductorPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'page404'
   }
+
 
 ];
 
