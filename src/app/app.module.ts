@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
             HttpClientModule,
             provideFirebaseApp(() => initializeApp(environment.firebase)),
             provideFirestore(() => getFirestore()),
+            provideAuth(() => getAuth()),
           ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },Geolocation],
   bootstrap: [AppComponent],
