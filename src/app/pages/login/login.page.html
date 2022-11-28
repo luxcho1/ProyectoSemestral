@@ -2,8 +2,68 @@
   <ion-toolbar>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding">
+    <form (ngSubmit)="login()" [formGroup]="credentials">
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="email" placeholder="Correo" formControlName="email"></ion-input>
+        <ion-note slot="error" *ngIf="(email?.dirty || email?.touched) && email?.errors">Formato email no válido</ion-note>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+        <ion-note slot="error" *ngIf="(password?.dirty || password?.touched) && password?.errors">Debes ingresar al menos 6 caracteres</ion-note>
+      </ion-item>
+  
+      <ion-button expand="full" type="submit" [disabled]="!credentials.valid">Iniciar Sesión</ion-button>
+      <ion-button expand="full" type="button" (click)="register()">Crear cuenta</ion-button>
+    </form>
+  </ion-content>
 
-<ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-content>
   <ion-card>
       <ion-card-title color="primary" class="ion-text-center">
           <ion-label>
@@ -38,4 +98,4 @@
 
 <ion-button color="success" [routerLink]="['/login']">
     <ion-icon name="log-in-outline"></ion-icon>
-  </ion-button>
+  </ion-button> -->

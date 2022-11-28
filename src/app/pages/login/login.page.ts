@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/autentificacion/login.service';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,75 +11,127 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  credentials!: FormGroup;
 
-  //Modelo
-  user: any = {
-    username : '',
-    password : ''
+  constructor(
+    private formBuilder: FormBuilder,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
+    private loginService: LoginService,
+    private router: Router
+  ) { }
+
+  ngOnInit() {
+    this.crearFormulario();
   }
 
-  field : string = '';
-  loading : HTMLIonLoadingElement;
-
-  constructor(private toastCtrl: ToastController, 
-              private route : Router,
-              private loadingCtrl: LoadingController) { 
-  }
-
-  ngOnInit(): void {
-    this.cargarLoading('assets/icon/car.jpg');
-  }
-
-  cargarLoading(message: string){
-    this.presentLoading(message);
-    setTimeout(() => {
-      this.loading.dismiss();
-    },2000);
-  }
-
-  async presentLoading(message: string) {
-    this.loading = await this.loadingCtrl.create({
-    message: `<img src="assets/icon/car.jpg" class="img-align" />`,
-    cssClass:`loading-wrapper img-align`
+  crearFormulario(){
+    this.credentials = this.formBuilder.group({
+      email: ['' , [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-    await this.loading.present();
   }
 
-  ingresar(){
-    if(this.validateModel(this.user)){
-      this.presentToast('Bienvenido!!!');
+  get email(){
+    return this.credentials?.get('email');
+  }
+
+  get password(){
+    return this.credentials?.get('password');
+  }
+
+  async login(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    const user = await this.loginService.login(this.credentials.value.email,this.credentials.value.password);
+    await loading.dismiss();
+
+    if(user){
+      this.router.navigateByUrl('/home',{replaceUrl:true});
     }
     else{
-      this.presentToast("Falta: " + this.field);
+      this.alertPresent('Login failed','Please try again!');
     }
   }
 
-  validateModel (model: any){
-    for(var[key,value] of Object.entries(model)){
-      if (value == ''){
-        this.field = key;
-        return false;
-      }
-    }
-    if (value == 'admin'){
-      this.field = 'Bienvenido admin';
-      this.route.navigate(['/administrador']);
-      return true;
+  async register(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    const user = await this.loginService.register(this.credentials.value.email,this.credentials.value.password);
+    await loading.dismiss();
+
+    if(user){
+      this.router.navigateByUrl('/home',{replaceUrl:true});
     }
     else{
-      this.field = 'Bienvenido Usuario';
-      this.route.navigate(['/usuario']);
-      return true;
+      this.alertPresent('Register failed','Please try again!');
     }
-
   }
 
-  async presentToast(message: string, duration?: number){
-    const toast = await this.toastCtrl.create({
-      message: message,
-      duration: duration?duration:2000
+  async alertPresent(header:string,message:string){
+    const alert = await this.alertCtrl.create({
+      header:header,
+      message:message,
+      buttons:['OK']
     });
-    toast.present();
+    await alert.present();
   }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // ngOnInit(): void {
+  //   this.cargarLoading('assets/icon/car.jpg');
+  // }
+
+  // cargarLoading(message: string){
+  //   this.presentLoading(message);
+  //   setTimeout(() => {
+  //     this.loading.dismiss();
+  //   },2000);
+  // }
+
+  // async presentLoading(message: string) {
+  //   this.loading = await this.loadingCtrl.create({
+  //   message: `<img src="assets/icon/car.jpg" class="img-align" />`,
+  //   cssClass:`loading-wrapper img-align`
+  //   });
+
+  //   await this.loading.present();
+  // }
+
+ 
