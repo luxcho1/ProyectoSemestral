@@ -11,30 +11,62 @@ export class ClimaGeolocalizacionService {
   //83cb79e8cd6208a33dfbcad1d9dc7adc
   //https://api.openweathermap.org/data/2.5/weather?
 
-  urlEndPoint: string   = 'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=83cb79e8cd6208a33dfbcad1d9dc7adc'
-  apiKey: string        = '83cb79e8cd6208a33dfbcad1d9dc7adc'
- 
-
+  apiKey        = '83cb79e8cd6208a33dfbcad1d9dc7adc'
+  lat: any;
+  lon: any;
+  weathertemp: any;
+  cityname: any;
+  weatherdetail: any;
+  respuesta: any;
 
   constructor(private httpClient: HttpClient,private geolocation: Geolocation) { }
+  getGeolocation(): Promise<any> {
+    return new Promise((resolve,reject) =>{
+      this.geolocation.getCurrentPosition().then((resp) => {
+        this.lat = resp.coords.latitude
+        this.lon = resp.coords.longitude
+       }).catch((error) => {
+         console.log('Error al obtener la ubicacion', error);
+       });
+       this.httpClient.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}&units=metric`).subscribe(results => {
+        console.log(this.respuesta);
+        resolve(results);
+       },
+       (err) => {
+        reject(err);
+       })
 
-//'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=83cb79e8cd6208a33dfbcad1d9dc7adc'
-  //https://api.openweathermap.org/data/2.5/weather?lat={ -33.4931768 }&lon={ -70.6097705 }&appid=83cb79e8cd6208a33dfbcad1d9dc7adc
-  
-  obtenerGeolocalizacion(){   
-    let lat
-    let lon
-
-    this.geolocation.getCurrentPosition().then((resp) => {
-      lat = resp.coords.latitude;
-      lon = resp.coords.longitude;
-      console.log(lat,lon)
-      return this.httpClient.get(`${this.urlEndPoint}lat=${lat}&lon=${lon}&appid=${this.apiKey}`);
-  });
+    })
+    
+  }
 }
 
 
-}
+
+// ObtenerGeolocalizacion(){
+//   this.geolocation.getCurrentPosition().then((resp) => {
+//     this.lat = resp.coords.latitude
+//     this.lon = resp.coords.longitude
+//    }).catch((error) => {
+//      console.log('Error al obtener la ubicacion', error);
+//    });
+//    this.httpClient.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}&units=metric`)
+//     .subscribe(results => {
+//     this.respuesta = results;
+//     this.cityname = this.respuesta.name;
+//     this.weathertemp = this.respuesta.main.temp;
+//     this.weatherdetail = this.respuesta.weather[0].description;
+//     console.log(this.respuesta);
+//    })
+// }
+
+
+
+
+
+
+
+
 
 // return new Promise((resolve,reject) =>{
 //   this.httpClient.get(`${this.urlEndPoint}lat=${lat}&lon=${lon}&appid=${this.apiKey}`)
@@ -62,4 +94,4 @@ export class ClimaGeolocalizacionService {
 
 
 //   return this.httpClient.get(`${this.url}lat=${lat}&lon=${lon}&appid=${this.apiKey}`)
-//}
+//

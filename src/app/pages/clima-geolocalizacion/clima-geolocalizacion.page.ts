@@ -12,28 +12,28 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 export class ClimaGeolocalizacionPage implements OnInit {
 
  
-  lat;
-  lon;
-  weather;
+  weathertemp: any;
+  cityname: any;
+  weatherdetail: any;
+  respuesta: any;
+
+
+  listadoClima:any = [];
   constructor(private geolocation: Geolocation,
               private climaService:ClimaGeolocalizacionService) {}
               
   ngOnInit() {
-    // this.obtenerGeolocalizacionClima();
   }
 
-  // obtenerGeolocalizacionClima(){
-  //   this.climaService.obtenerGeolocalizacion(this.lat,this.lon).subscribe(data => {
-  //     this.weather = data;
-  //   });
-  // };  
-  
-  // obtenerClima(){
-  //   this.climaService.obtenerDatosClima(this.lat,this.lon).subscribe(data => {
-  //     this.weather = data;
-  //   });
-  
-} 
+  obtenerClima(){
+    this.climaService.getGeolocation().then(results => {
+      this.respuesta = results;
+      this.cityname = this.respuesta.name;
+      this.weathertemp = this.respuesta.main.temp;
+      this.weatherdetail = this.respuesta.weather[0].description;
+    })
+  }
+}
 
 
   
