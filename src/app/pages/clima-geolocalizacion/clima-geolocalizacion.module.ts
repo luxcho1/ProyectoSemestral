@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ClimaGeolocalizacionPageRoutingModule } from './clima-geolocalizacion-routing.module';
 
 import { ClimaGeolocalizacionPage } from './clima-geolocalizacion.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { ClimaGeolocalizacionPage } from './clima-geolocalizacion.page';
     FormsModule,
     IonicModule,
     ClimaGeolocalizacionPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [ClimaGeolocalizacionPage]
 })

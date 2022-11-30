@@ -16,14 +16,16 @@ export class ClimaGeolocalizacionPage implements OnInit {
   cityname: any;
   weatherdetail: any;
   respuesta: any;
+  pageTitle = 'Geolocalizacion y Clima';
+  isNotHome = true;
 
 
-  listadoClima:any = [];
   constructor(private geolocation: Geolocation,
               private climaService:ClimaGeolocalizacionService) {}
               
   ngOnInit() {
   }
+
 
   obtenerClima(){
     this.climaService.getGeolocation().then(results => {
@@ -37,19 +39,3 @@ export class ClimaGeolocalizacionPage implements OnInit {
 
 
   
-
-
-
-// geolocalizacion
-// this.geolocation.getCurrentPosition().then((resp) => {
-//   this.lat = resp.coords.latitude
-//   this.lon = resp.coords.longitude
-//   console.log(this.lat,this.lon)
-
-//  }).catch((error) => {
-//    console.log('Error getting location', error);
-//  });
- 
-//  let watch = this.geolocation.watchPosition();
-//  watch.subscribe((data) => {
-//  })
