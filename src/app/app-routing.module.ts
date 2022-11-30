@@ -51,7 +51,11 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'page404'
+  },  {
+    path: 'detalle-conductor',
+    loadChildren: () => import('./pages/detalle-conductor/detalle-conductor.module').then( m => m.DetalleConductorPageModule)
   }
+
 
 
 ];

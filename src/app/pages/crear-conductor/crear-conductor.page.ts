@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { BasedatosService } from 'src/app/services/baseDatos/basedatos.service';
 import { Conductor } from 'src/app/services/baseDatos/conductor';
+import { DetalleConductorPage } from '../detalle-conductor/detalle-conductor.page';
 
 @Component({
   selector: 'app-crear-conductor',
@@ -10,9 +11,9 @@ import { Conductor } from 'src/app/services/baseDatos/conductor';
 })
 export class CrearConductorPage{
 
-  @Input() id :string;
-  conductor: Conductor = null;
-  pageTitle: string = '';
+ 
+  pageTitle = 'Base De Datos';
+  isNotHome = true;
   
   conductores : Conductor[] = [];
   
@@ -28,6 +29,97 @@ export class CrearConductorPage{
       console.log(respuesta);
       this.conductores = respuesta;
     });
+  }
+
+  async addConductores(){
+    const alert = await this.alertCtrl.create({
+      header:'Agregar Conductor',
+      inputs:[
+        {
+          name:'nombre',
+          type:'text',
+          placeholder:'Nombre',
+        },
+        {
+          name:'apellido',
+          type:'text',
+          placeholder:'Apellido',
+        },
+        {
+          name:'genero',
+          type:'text',
+          placeholder:'Genero',
+        },
+        {
+          name:'email',
+          type:'email',
+          placeholder:'correo@correo.com',
+        },
+        {
+          name:'edad',
+          type:'number',
+          placeholder:'Edad',
+        },
+        {
+          name:'direccion',
+          type:'text',
+          placeholder:'Direccion',
+        },
+        {
+          name:'comuna',
+          type:'text',
+          placeholder:'Comuna',
+        },
+        {
+          name:'celula',
+          type:'number',
+          placeholder:'Celula',
+        },
+        {
+          name:'patente',
+          type:'text',
+          placeholder:'Patente',
+        },
+        {
+          name:'image',
+          type:'url',
+          placeholder:'link image',
+        }
+       ],
+      buttons:[
+        {
+          text:'Cancelar',
+          role:'cancel'
+        },
+        {
+          text:'Guardar',
+          role:'confirm',
+          handler:(data) => {
+            this.baseDatos.addConductor(data);
+            this.toastPresent('Conductor agregado correctamente');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  async toastPresent(message:string){
+    const toast = await this.toastCtrl.create({
+      message:message,
+      duration:1000
+    });
+    toast.present();
+  }
+
+  async obtenerDetalleConductor(conductor){
+    const modal = await this.modalCtrl.create({
+      component: DetalleConductorPage,
+      componentProps: {id: conductor.id },
+      breakpoints: [0,0.5,0.8,1],
+      initialBreakpoint:1
+    });
+    modal.present();
   }
 
 }

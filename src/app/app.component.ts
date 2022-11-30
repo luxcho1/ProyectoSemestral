@@ -9,10 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Home', url: '/home', icon: 'mail' },
-    { title: 'About', url: '/about', icon: 'body' },
-    { title: 'Coversor', url: '/coversor', icon: 'albums' },
+    { title: 'Inicio', url: '/home', icon: 'home' },
+    { title: 'Conversor De Monedas', url: '/coversor', icon: 'albums' },
     { title: 'Clima', url: '/clima-geolocalizacion', icon: 'cloudy-night' },
+    { title: 'Base De Datos', url: '/crear-conductor', icon: 'reader' },
+    { title: 'About', url: '/about', icon: 'body' },
     { title: 'Cerrar Sesión', url: '/login', icon: 'exit' }
   ];
   constructor() { 

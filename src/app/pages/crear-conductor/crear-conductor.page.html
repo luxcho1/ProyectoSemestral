@@ -1,26 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
 <ion-content [fullscreen]="true">
+  <ion-button expand="block" (click)="addConductores()">Agregar Conductor</ion-button>
   <ion-list>
-    <ion-item *ngFor="let conductor of conductores" (click)="openDetailUsuario(usuario)">
-      <!-- <ion-avatar slot="start">
-        <img [src]="usuario.image" alt="">
-      </ion-avatar> -->
+    <ion-item *ngFor="let conductor of conductores" (click)="obtenerDetalleConductor(conductor)">
       <ion-label>
         <h3>{{conductor.nombre}} {{conductor.apellido}} {{conductor.edad}}</h3>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="success" (click)="addUsuario()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-</ion-content>
+  
+  
+  
+  
+  
+  
