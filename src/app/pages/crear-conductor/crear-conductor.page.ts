@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AlertController, ModalController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { BasedatosService } from 'src/app/services/baseDatos/basedatos.service';
 import { Conductor } from 'src/app/services/baseDatos/conductor';
 import { DetalleConductorPage } from '../detalle-conductor/detalle-conductor.page';
@@ -16,11 +17,15 @@ export class CrearConductorPage{
   isNotHome = true;
   
   conductores : Conductor[] = [];
+
   
-  constructor(  private baseDatos:BasedatosService, 
-                private modalCtrl:ModalController, 
-                private alertCtrl:AlertController,
-    private toastCtrl:ToastController) {
+  constructor(  private baseDatos:      BasedatosService, 
+                private modalCtrl:      ModalController, 
+                private alertCtrl:      AlertController,
+                private toastCtrl:      ToastController,
+                private loadingCtrl:    LoadingController,
+                private router:         Router,
+                ) {
     this.getConductores();
   }
 
@@ -29,6 +34,14 @@ export class CrearConductorPage{
       console.log(respuesta);
       this.conductores = respuesta;
     });
+  }
+  async alertPresent(header:string,message:string){
+    const alert = await this.alertCtrl.create({
+      header:header,
+      message:message,
+      buttons:['OK']
+    });
+    await alert.present();
   }
 
   async addConductores(){
@@ -81,9 +94,9 @@ export class CrearConductorPage{
           placeholder:'Patente',
         },
         {
-          name:'image',
+          name:'imagen',
           type:'url',
-          placeholder:'link image',
+          placeholder:'link imagen',
         }
        ],
       buttons:[

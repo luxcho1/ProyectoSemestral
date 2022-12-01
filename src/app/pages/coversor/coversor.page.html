@@ -2,42 +2,44 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-list>
+  <ion-list class="datos">
     <ion-item >
       <ion-label *ngIf="resultados">
-        <h3>{{resultados.dolar.codigo}}</h3>
-        <h3>{{resultados.dolar.valor}} {{resultados.dolar.unidad_medida}}</h3>
+        <h3 class="codigo">{{resultados.dolar.codigo}}</h3>
+        <h3 class="codigo">{{resultados.dolar.valor}} {{resultados.dolar.unidad_medida}}</h3>
       </ion-label>
     </ion-item> 
 
     <ion-item >
       <ion-label *ngIf="resultados">
-        <h3>{{resultados.euro.codigo}}</h3>
-        <h3>{{resultados.euro.valor}} {{resultados.euro.unidad_medida}}</h3>
+        <h3 class="codigo">{{resultados.euro.codigo}}</h3>
+        <h3 class="codigo">{{resultados.euro.valor}} {{resultados.euro.unidad_medida}}</h3>
       </ion-label>
     </ion-item> 
 
     <ion-item >
       <ion-label *ngIf="resultados">
-        <h3>{{resultados.uf.codigo}}</h3>
-        <h3>{{resultados.uf.valor}} {{resultados.uf.unidad_medida}}</h3>
+        <h3 class="codigo">{{resultados.uf.codigo}}</h3>
+        <h3 class="codigo">{{resultados.uf.valor}} {{resultados.uf.unidad_medida}}</h3>
       </ion-label>
     </ion-item> 
   </ion-list>
 
-  <ion-select id="opcion" placeholder="Seleccione el tipo de cambio" [(ngModel)] = "moneda">
-    <ion-select-option value="dolares">Dolar</ion-select-option>
-    <ion-select-option value="euros">Euro</ion-select-option>
-    <ion-select-option value="ufs">UF</ion-select-option>
-  </ion-select>
-
-
-  <ion-label>
-    <p>Ingrese monto:</p>
-    <input type="number" [(ngModel)]="valor" min="1" placeholder="0">
-    <ion-button id="convertidor" (click)="obtenerValorMoneda(moneda)">Convertir</ion-button>
-    <p>El resultado de la conversion es: ${{resultadoTotal}} {{tipoMoneda}}</p>
-  </ion-label>
+  <ion-card class="card">
+    <ion-select class="opcion" placeholder="Seleccione el tipo de cambio" [(ngModel)] = "moneda">
+      <ion-select-option value="dolares">Dolar</ion-select-option>
+      <ion-select-option value="euros">Euro</ion-select-option>
+      <ion-select-option value="ufs">UF</ion-select-option>
+    </ion-select>
+  
+  
+    <ion-label class="label">
+      <p>Ingrese monto:</p>
+      <div><input class="input" type="number" [(ngModel)]="valor" min="1" placeholder="0"></div>
+      <ion-button expand="block" (click)="obtenerValorMoneda(moneda)">Convertir</ion-button>
+      <p>El resultado de la conversion es: ${{resultadoTotal}} {{tipoMoneda}}</p>
+    </ion-label>
+  </ion-card>
 
 
 

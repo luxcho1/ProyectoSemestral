@@ -1,23 +1,26 @@
 <app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
 <ion-content>
-  <ion-card>
-    <ion-item lines="none">
-      <span unit="metric">
-        Temperatura: {{weathertemp}} °C
-      </span>
-    </ion-item>
-  
-    <ion-item lines="none">
-      <ion-icon name="location"></ion-icon>
-      <span> {{cityname}}</span>
-    </ion-item>
-  
-    <ion-item lines="none">
+  <ion-card class="card">
+    <h1>Presione el boton para obtener su ubicacion y clima</h1>
+
+    <div>
+      <h3>Ubicacion Actual</h3>
+        <ion-icon name="location"></ion-icon>
+        <span> {{cityname}}</span>
+    </div>
+    
+    <div>
+      <h3>Temperatura Actual</h3>
+      <span> {{weathertemp}} °C </span>
+    </div>
+
+    <div>
+      <h3>Detalle Clima</h3>
       <ion-icon name="partly-sunny"></ion-icon>
       <span> {{weatherdetail}}</span>
-    </ion-item>
-  
-    <ion-button (click)="obtenerClima()">Usar mi ubicacion</ion-button>
+    </div>
+      
+    <ion-button (click)="obtenerClima()">Obtener Ubicacion Actual</ion-button>
   </ion-card>
 </ion-content>
