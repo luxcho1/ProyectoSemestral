@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>TellevoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class="img" src="../../../assets/icon/menu-seleccion.png" alt="">
+
+  <ion-card >
+    <h1>
+      ¿Cuenta con movilizacion?
+    </h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <h4>Si, cuento con movilizacion propia</h4>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col><ion-button [routerLink]="['/home']">Ir al home</ion-button></ion-col>
+              <ion-col></ion-col>
+            </ion-row>
+        </ion-col>
+  
+        <ion-col >
+          <h4>No, necesito que me lleven</h4>
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col><ion-button [routerLink]="['/home2']">Ir al home</ion-button></ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

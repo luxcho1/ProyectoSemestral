@@ -49,12 +49,37 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crear-conductor/crear-conductor.module').then( m => m.CrearConductorPageModule)
   },
   {
-    path: '**',
-    redirectTo: 'page404'
-  },  {
+    path: 'menu-seleccion',
+    loadChildren: () => import('./pages/menu-seleccion/menu-seleccion.module').then( m => m.MenuSeleccionPageModule)
+  },
+  {
     path: 'detalle-conductor',
     loadChildren: () => import('./pages/detalle-conductor/detalle-conductor.module').then( m => m.DetalleConductorPageModule)
+  },
+  {
+    path: 'home2',
+    loadChildren: () => import('./pages/home2/home2.module').then( m => m.Home2PageModule)
+  },
+  {
+    path: 'no-movilizacion',
+    loadChildren: () => import('./pages/no-movilizacion/no-movilizacion.module').then( m => m.NoMovilizacionPageModule)
+  },
+  {
+    path: 'si-movilizacion',
+    loadChildren: () => import('./pages/si-movilizacion/si-movilizacion.module').then( m => m.SiMovilizacionPageModule)
+  },
+  {
+    path: 'cancelar-viaje',
+    loadChildren: () => import('./pages/cancelar-viaje/cancelar-viaje.module').then( m => m.CancelarViajePageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'page404'
   }
+
+
+
+
 
 
 

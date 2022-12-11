@@ -1,72 +1,87 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalle Conductor</ion-title>
+    <ion-title>Coordinacion de viaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf="conductor">
-    <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.nombre"></ion-input>
-    </ion-item>
+  <h3>
+    Enviar mensaje para coordinar viaje con el conductor
+  </h3>
+  <ion-textarea class="custom-textarea" placeholder="Escriba aqui el mensaje"  [clearOnEdit]="true"></ion-textarea>
 
-    <ion-item>
-      <ion-label position="stacked">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.apellido"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Genero</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.genero"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Correo</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Edad</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.edad"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Direccion</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.direccion"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Comuna</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.comuna"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Celula</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.celula"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Patente</ion-label>
-      <ion-input type="text" [(ngModel)]="conductor.patente"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Imagen</ion-label>
-      <ion-avatar slot="start" (click)="uploadAvatar()">
-        <img [src]="conductor.imagen" alt="">
-      </ion-avatar>
-      <ion-input type="url" [(ngModel)]="conductor.imagen" ></ion-input>
-    </ion-item>
-
-    
-  </div>
-
-  <ion-button expand="block" color="success" (click)="updateUsuario()">
-    <ion-icon name="save" slot="start">Update</ion-icon>
+  <ion-button expand="block" color="success" (click)="enviarMensaje()" (click)="eliminarConductor()">
+    <ion-icon name="send-sharp" slot="start" >Enviar Mensaje</ion-icon>
   </ion-button>
-  <ion-button expand="block" color="danger" (click)="deleteUsuario()">
-    <ion-icon name="trash" slot="start">Delete</ion-icon>
-  </ion-button>
-
 </ion-content>
+
+
+
+
+
+
+<!-- 
+<div *ngIf="conductor">
+  <ion-item>
+    <ion-label position="stacked">Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Apellido</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.apellido"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Genero</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.genero"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Correo</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Edad</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.edad"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Direccion</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.direccion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Comuna</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.comuna"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Celula</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.celula"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Patente</ion-label>
+    <ion-input type="text" [(ngModel)]="conductor.patente"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Imagen</ion-label>
+    <ion-avatar slot="start" (click)="uploadAvatar()">
+      <img [src]="conductor.imagen" alt="">
+    </ion-avatar>
+    <ion-input type="url" [(ngModel)]="conductor.imagen" ></ion-input>
+  </ion-item>
+
+  
+</div>
+
+<ion-button expand="block" color="success" (click)="updateUsuario()">
+  <ion-icon name="save" slot="start">Update</ion-icon>
+</ion-button>
+<ion-button expand="block" color="danger" (click)="deleteUsuario()">
+  <ion-icon name="trash" slot="start">Delete</ion-icon>
+</ion-button> -->

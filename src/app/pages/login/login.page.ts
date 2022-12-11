@@ -47,7 +47,7 @@ export class LoginPage implements OnInit {
     await loading.dismiss();
 
     if(user){
-      this.router.navigateByUrl('/home',{replaceUrl:true});
+      this.router.navigateByUrl('/menu-seleccion',{replaceUrl:true});
     }
     else{
       this.alertPresent('Login failed','Please try again!');
@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
     await loading.dismiss();
 
     if(user){
-      this.router.navigateByUrl('/home',{replaceUrl:true});
+      this.router.navigateByUrl('/menu-seleccion',{replaceUrl:true});
     }
     else{
       this.alertPresent('Register failed','Please try again!');

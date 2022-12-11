@@ -5,6 +5,7 @@ import { Conductor } from 'src/app/services/baseDatos/conductor';
 import { Camera } from '@capacitor/camera';
 import { CameraResultType, CameraSource } from '@capacitor/camera/dist/esm/definitions';
 import { CamaraService } from 'src/app/services/camara/camara.service';
+import { Simovilizacion } from 'src/app/services/baseDatos/simovilizacion';
 
 @Component({
   selector: 'app-detalle-conductor',
@@ -23,72 +24,79 @@ export class DetalleConductorPage implements OnInit {
 
   
   @Input() id :string;
-  conductor: Conductor = null;
+  simovilizacion: Simovilizacion = null;
   profile:any=null;
   
   ngOnInit() {
     this.getConductor();
-    console.log(this.conductor);
+    console.log(this.simovilizacion);
   }
 
-  getConductor(){
-    this.baseDatos.getConductorById(this.id).subscribe(respuesta => {
-      this.conductor = respuesta;
-    });
-  }
-
-  async updateUsuario(){
-    this.baseDatos.updateConductor(this.conductor);
-    this.modalCtrl.dismiss();
-    const toast = await this.toastCtrl.create({
-      message:'Conductor actualizado',
-      duration:1000,
-    });
-    toast.present();
-  }
-
-  async deleteUsuario(){
-    this.baseDatos.deleteConductor(this.conductor);
-    this.modalCtrl.dismiss();
-    const toast = await this.toastCtrl.create({
-      message:'Conductor eliminado',
-      duration:1000,
-    })
-    toast.present();
-  }
-
-  loadProfile(){
-    this.camaraServicio.getUserProfile().subscribe(respuesta => {
-      this.profile = respuesta
-    });
-  }
-
-  async uploadAvatar(){
-    const avatar = await Camera.getPhoto({
-      quality:90,
-      allowEditing:false,
-      resultType: CameraResultType.Base64,
-      source: CameraSource.Camera //Photos o Prompt
-    });
-      const result = await Promise.resolve(this.camaraServicio.obtenerAvatar(avatar));
-      this.conductor.imagen = result;
-      console.log(result);
-    }
-
-  async alertPresent(header:string,message:string){
+  async enviarMensaje() {
     const alert = await this.alertCtrl.create({
-      header:header,
-      message:message,
-      buttons:['OK']
+      header: 'Aviso',
+      subHeader: '',
+      message: 'Mensaje enviado correctamente',
+      buttons: ['OK'] ,
     });
+
     await alert.present();
   }
 
-  async toastPresent(message:string){
-    const toast = await this.toastCtrl.create({
-      message:message,
-      duration:1000
+
+  getConductor(){
+    this.baseDatos.obtenerSimovilizacionById(this.id).subscribe(respuesta => {
+      this.simovilizacion = respuesta;
     });
-    toast.present();
   }
+
+  // async updateUsuario(){
+  //   this.baseDatos.updateConductor(this.conductor);
+  //   this.modalCtrl.dismiss();
+  //   const toast = await this.toastCtrl.create({
+  //     message:'Conductor actualizado',
+  //     duration:1000,
+  //   });
+  //   toast.present();
+  // }
+
+  async eliminarConductor(){
+    this.baseDatos.eliminarSimovilizacion(this.simovilizacion);
+    this.modalCtrl.dismiss();
+  }
+
+  // loadProfile(){
+  //   this.camaraServicio.getUserProfile().subscribe(respuesta => {
+  //     this.profile = respuesta
+  //   });
+  // }
+
+  // async uploadAvatar(){
+  //   const avatar = await Camera.getPhoto({
+  //     quality:90,
+  //     allowEditing:false,
+  //     resultType: CameraResultType.Base64,
+  //     source: CameraSource.Camera //Photos o Prompt
+  //   });
+  //     const result = await Promise.resolve(this.camaraServicio.obtenerAvatar(avatar));
+  //     this.conductor.imagen = result;
+  //     console.log(result);
+  //   }
+
+  // async alertPresent(header:string,message:string){
+  //   const alert = await this.alertCtrl.create({
+  //     header:header,
+  //     message:message,
+  //     buttons:['OK']
+  //   });
+  //   await alert.present();
+  // }
+
+  // async toastPresent(message:string){
+  //   const toast = await this.toastCtrl.create({
+  //     message:message,
+  //     duration:1000
+  //   });
+  //   toast.present();
+  // }
 }

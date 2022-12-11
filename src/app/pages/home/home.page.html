@@ -3,13 +3,24 @@
       <ion-buttons  slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title class="ion-text-capitalize">Home</ion-title>
+      <ion-title class="ion-text-capitalize">Inicio</ion-title>
     </ion-toolbar>
   </ion-header>
 
 <ion-content>
 <h1 class="h1">¿Que es TeLlevoApp?</h1>
 <img class="img" src="../../../assets/icon/imgtransporte.jpg" alt="">
+<ion-row>
+  <ion-col></ion-col>
+  <ion-col>
+    <ion-button [routerLink]="['/si-movilizacion']">
+      Programar viaje de retorno
+    </ion-button>
+  </ion-col>
+  <ion-col></ion-col>
+</ion-row>
+
+
 <h3 class="h3">Debido a la pandemia han surgidos problemas ya que no se han podido realizar clase de forma presencial y se ha tenido que adaptar a las nuevas tecnologias y hacer clases remotas. Pero con el avance de las vacunas y su eficiencia los casos han ido disminuyendo, asi que se ha podido volver a clases presenciales de forma paulatina.
 </h3>
 <h3 class="h3">Pero debido a la volver a la normalidad los estudiantes se han enfrentado a los siguentes problemas, tales como falta de transporte, alto costos de movilizacion, no contar con auto y que la institución no ofrezca transporte. </h3>

@@ -1,0 +1,22 @@
+<app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
+
+<ion-content>
+  <img class="img" src="../../../assets/icon/iniciar-viaje.webp" alt="">
+
+
+  <ion-card>
+    <h1>Ingrese sus datos para iniciar el viaje</h1>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col>
+      <ion-button  (click)="agregarConductores()">
+          Iniciar viaje
+      </ion-button>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  </ion-card>
+</ion-content>
+
+
+<!-- [routerLink]="['/cancelar-viaje']" -->

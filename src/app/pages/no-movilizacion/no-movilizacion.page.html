@@ -1,0 +1,83 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">This is the menu content.</ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>No movilizacion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <h1>
+      Estos son los vehiculos que actualmente reciben pasajeros
+    </h1>
+  
+    <ion-card>
+      <ion-list>
+        <ion-item *ngFor="let conductor of simovilizacion">
+          <ion-avatar slot="start">
+            <img [src]="conductor.imagen" alt="">
+          </ion-avatar>
+          <ion-label>
+            <h3>Nombre: {{conductor.nombre}} {{conductor.apellido}}</h3>
+            <h3>Inicio: {{conductor.inicio}}</h3>
+            <h3>Destino: {{conductor.destino}}</h3>
+            <h3>Valor persona: {{conductor.valor}}</h3>
+            <ion-button expand="block" (click)="obtenerDetalleConductor(conductor)">Coordinar Viaje</ion-button>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+
+
+
+
+
+
+
+
+
+
+  </ion-content>
+</div>
+
+
+
+<!-- <ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>No movilizacion</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<!-- <ion-content>
+  <h1>
+    Estos son los vehiculos que actualmente reciben pasajeros
+  </h1>
+
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="let conductor of simovilizacion">
+        <ion-avatar slot="start">
+          <img [src]="conductor.imagen" alt="">
+        </ion-avatar>
+        <ion-label>
+          <h3>Nombre: {{conductor.nombre}} {{conductor.apellido}}</h3>
+          <h3>Inicio: {{conductor.inicio}}</h3>
+          <h3>Destino: {{conductor.destino}}</h3>
+          <h3>Valor persona: {{conductor.valor}}</h3>
+          <ion-button expand="block" (click)="obtenerDetalleConductor(conductor)">Coordinar Viaje</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content> -->

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc, docData, addDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Conductor } from './conductor';
+import { Simovilizacion } from './simovilizacion';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,40 +11,48 @@ export class BasedatosService {
 
   constructor(private firestore:Firestore) {}
 
-  getConductor(): Observable<Conductor[]>{
-    const conductorRef = collection(this.firestore, 'conductor');
-    return collectionData(conductorRef, {idField:'id'}) as Observable<Conductor[]>;
+  obtenerSimovilizacion(): Observable<Simovilizacion[]>{
+    const simovilizacionRef = collection(this.firestore, 'simovilizacion');
+    return collectionData(simovilizacionRef, {idField:'id'}) as Observable<Simovilizacion[]>;
   }
 
-  getConductorById(id:string): Observable<Conductor>{
-    const conductorDocRef = doc(this.firestore, `conductor/${id}`);
-    return docData(conductorDocRef, { idField:'id' }) as Observable<Conductor>;
+  obtenerSimovilizacionById(id:string): Observable<Simovilizacion>{
+      const simovilizacionDocRef = doc(this.firestore, `simovilizacion/${id}`);
+      return docData(simovilizacionDocRef, { idField:'id' }) as Observable<Simovilizacion>;
   }
 
-  addConductor(conductor: Conductor){
-    const conductorRef = collection(this.firestore, 'conductor');
-    return addDoc(conductorRef, conductor);
+  agregarSimovilizacion(simovilizacion: Simovilizacion){
+      const simovilizacionRef = collection(this.firestore, 'simovilizacion');
+      return addDoc(simovilizacionRef, simovilizacion);
   }
 
-  updateConductor(conductor: Conductor){
-    const conductoresRef = doc(this.firestore, `conductor/${conductor.id}`);
-    return updateDoc(conductoresRef, 
-      {
-        nombre:        conductor.nombre,
-        apellido:      conductor.apellido,
-        genero:        conductor.genero,
-        email:         conductor.email,
-        edad:          conductor.edad,
-        direccion:     conductor.direccion,
-        comuna:        conductor.comuna,
-        celula:        conductor.celula,
-        patente:       conductor.patente,
-        imagen:        conductor.imagen
-      });
-  }
+  eliminarSimovilizacion(simovilizacion: Simovilizacion){
+      const simovilizacionRef = doc(this.firestore,`simovilizacion/${simovilizacion.id}`);
+      return deleteDoc(simovilizacionRef);
+    }
+  
+  
+  
+  
+  
+  
+  // getConductor(): Observable<Conductor[]>{
+  //   const conductorRef = collection(this.firestore, 'conductor');
+  //   return collectionData(conductorRef, {idField:'id'}) as Observable<Conductor[]>;
+  // }
 
-  deleteConductor(conductor: Conductor){
-    const conductoresRef = doc(this.firestore,`conductor/${conductor.id}`);
-    return deleteDoc(conductoresRef);
-  }
+  // getConductorById(id:string): Observable<Conductor>{
+  //   const conductorDocRef = doc(this.firestore, `conductor/${id}`);
+  //   return docData(conductorDocRef, { idField:'id' }) as Observable<Conductor>;
+  // }
+
+  // addConductor(conductor: Conductor){
+  //   const conductorRef = collection(this.firestore, 'conductor');
+  //   return addDoc(conductorRef, conductor);
+  // }
+
+  // deleteConductor(conductor: Conductor){
+  //   const conductoresRef = doc(this.firestore,`conductor/${conductor.id}`);
+  //   return deleteDoc(conductoresRef);
+  // }
 }
