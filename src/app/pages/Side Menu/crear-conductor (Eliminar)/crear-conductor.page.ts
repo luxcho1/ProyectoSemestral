@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { BasedatosService } from 'src/app/services/baseDatos/basedatos.service';
 import { Conductor } from 'src/app/services/baseDatos/conductor';
-import { DetalleConductorPage } from '../detalle-conductor/detalle-conductor.page';
+import { DetalleConductorPage } from '../../Regla De Negocio/detalle-conductor/detalle-conductor.page';
 
 @Component({
   selector: 'app-crear-conductor',
