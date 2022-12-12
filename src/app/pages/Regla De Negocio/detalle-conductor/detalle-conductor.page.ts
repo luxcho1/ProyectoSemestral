@@ -50,16 +50,6 @@ export class DetalleConductorPage implements OnInit {
     });
   }
 
-  // async updateUsuario(){
-  //   this.baseDatos.updateConductor(this.conductor);
-  //   this.modalCtrl.dismiss();
-  //   const toast = await this.toastCtrl.create({
-  //     message:'Conductor actualizado',
-  //     duration:1000,
-  //   });
-  //   toast.present();
-  // }
-
   async eliminarConductor(){
     this.baseDatos.eliminarSimovilizacion(this.simovilizacion);
     this.modalCtrl.dismiss();

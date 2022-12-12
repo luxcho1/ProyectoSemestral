@@ -13,7 +13,8 @@ import { Home2Page } from './home2.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    Home2PageRoutingModule
+    Home2PageRoutingModule,
+    
   ],
   declarations: [Home2Page]
 })

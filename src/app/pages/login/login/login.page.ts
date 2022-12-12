@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/menu-seleccion',{replaceUrl:true});
     }
     else{
-      this.alertPresent('Login failed','Please try again!');
+      this.alertPresent('Login Fallido','Intentelo nuevamente');
     }
   }
 
@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/menu-seleccion',{replaceUrl:true});
     }
     else{
-      this.alertPresent('Register failed','Please try again!');
+      this.alertPresent('Registro Fallido','Intentelo nuevamente');
     }
   }
 

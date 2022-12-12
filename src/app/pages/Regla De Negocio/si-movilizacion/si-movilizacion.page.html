@@ -1,6 +1,91 @@
 <app-header [isNotHome]="isNotHome" [pageTitle]="pageTitle"></app-header>
 
+
 <ion-content>
+  <img class="img" src="../../../assets/icon/iniciar-viaje.webp" alt="">
+
+  <ion-card>
+    <h1>Ingrese sus datos para iniciar el viaje</h1>
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input  type="text" placeholder="Ingrese su nombre" [(ngModel)]="simovilizacion.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Apellido: </ion-label>
+      <ion-input  type="text" placeholder="Ingrese su apellido" [(ngModel)]="simovilizacion.apellido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Inicio: </ion-label>
+      <ion-input  type="text" placeholder="Ingrese su punto de partida" [(ngModel)]="simovilizacion.inicio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Destino: </ion-label>
+      <ion-input  type="text" placeholder="Ingrese su destino" [(ngModel)]="simovilizacion.destino"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Valor Por Persona: </ion-label>
+      <ion-input  type="text" placeholder="Ingrese el valor del viaje" [(ngModel)]="simovilizacion.valor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-input (click)="uploadAvatar()" type="text" placeholder="Subir Foto" [(ngModel)]="simovilizacion.imagen"></ion-input>
+    </ion-item>
+
+    
+
+    
+    
+    
+    
+    <!-- <ion-item>
+      <ion-avatar (click)="uploadAvatar()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-avatar>
+      <ion-input  type="text" [(ngModel)]="simovilizacion.imagen"></ion-input>
+    </ion-item> -->
+
+    
+    
+    
+    
+    <!-- <label>
+      image:
+      <ion-avatar (click)="uploadAvatar()">
+        <ion-icon name="images"></ion-icon>
+      </ion-avatar>
+      <ion-input type="text" [(ngModel)]="simovilizacion.imagen"></ion-input>
+    </label> -->
+
+    
+
+
+
+
+
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col>
+      <ion-button   (click)="addUsuario()" >
+          Iniciar viaje
+      </ion-button>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  </ion-card>
+
+  
+</ion-content>
+
+
+
+<!-- <ion-content>
   <img class="img" src="../../../assets/icon/iniciar-viaje.webp" alt="">
 
 
@@ -9,14 +94,13 @@
   <ion-row>
     <ion-col></ion-col>
     <ion-col>
-      <ion-button  (click)="agregarConductores()">
+      <ion-button   (click)="agregarConductores()" >
           Iniciar viaje
       </ion-button>
     </ion-col>
     <ion-col></ion-col>
   </ion-row>
   </ion-card>
-</ion-content>
+</ion-content> -->
 
-
-<!-- [routerLink]="['/cancelar-viaje']" -->
+<!-- (click)="uploadAvatar()" -->

@@ -60,13 +60,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'page404'
   }
-
-
-
-
-
-
-
 ];
 
 @NgModule({

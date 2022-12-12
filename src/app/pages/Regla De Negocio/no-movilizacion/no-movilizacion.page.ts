@@ -13,6 +13,8 @@ import { DetalleConductorPage } from '../detalle-conductor/detalle-conductor.pag
 export class NoMovilizacionPage{
 
   simovilizacion : Simovilizacion[] = [];
+  pageTitle = 'Coordinar Viaje';
+  isNotHome = true;
   constructor(  private baseDatos:      BasedatosService, 
                 private modalCtrl:      ModalController, 
                 private alertCtrl:      AlertController,

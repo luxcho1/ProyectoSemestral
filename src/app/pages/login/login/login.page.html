@@ -1,8 +1,15 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
+    <ion-title>Inicio De Sesión</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
+
+
 <ion-content class="ion-padding">
+
+    <img  src="../../../../assets/icon/persona.png" class="center"/>
+
+
     <form (ngSubmit)="login()" [formGroup]="credentials">
       <ion-item class="ion-margin-bottom">
         <ion-input type="email" placeholder="Correo" formControlName="email"></ion-input>

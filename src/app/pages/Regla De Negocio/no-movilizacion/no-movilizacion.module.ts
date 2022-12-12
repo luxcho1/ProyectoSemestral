@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { NoMovilizacionPageRoutingModule } from './no-movilizacion-routing.module';
 
 import { NoMovilizacionPage } from './no-movilizacion.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NoMovilizacionPageRoutingModule
+    NoMovilizacionPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [NoMovilizacionPage]
 })

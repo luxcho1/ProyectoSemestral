@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';  
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-home2',
@@ -8,14 +9,14 @@ import { MenuController } from '@ionic/angular';
 })
 export class Home2Page {
 
-  public appPages2 = [
-    { title: 'Inicio', url: '/home', icon: 'home' },
-    { title: 'Conversor De Monedas', url: '/coversor', icon: 'albums' },
-    { title: 'Clima', url: '/clima-geolocalizacion', icon: 'cloudy-night' },
-    { title: 'Base De Datos', url: '/crear-conductor', icon: 'reader' },
-    { title: 'About', url: '/about', icon: 'body' },
-    { title: 'Cerrar Sesión', url: '/login', icon: 'exit' }
-  ];
+  // public appPages2 = [
+  //   { title: 'Inicio', url: '/home2', icon: 'home' },
+  //   { title: 'Conversor De Monedas', url: '/coversor', icon: 'albums' },
+  //   { title: 'Clima', url: '/clima-geolocalizacion', icon: 'cloudy-night' },
+  //   { title: 'Base De Datos', url: '/crear-conductor', icon: 'reader' },
+  //   { title: 'About', url: '/about', icon: 'body' },
+  //   { title: 'Cerrar Sesión', url: '/login', icon: 'exit' }
+  // ];
   
   constructor() { }
 }
