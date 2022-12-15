@@ -48,7 +48,7 @@ export class SiMovilizacionPage{
     this.baseDatos.agregarSimovilizacion(this.simovilizacion);
     this.modalCtrl.dismiss();
     const toast = await this.toastCtrl.create({
-      message:'Usuario Creado',
+      message:'Viaje Iniciado Correctamente',
       duration:1000,
     });
     toast.present();

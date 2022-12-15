@@ -33,10 +33,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/Side Menu/clima-geolocalizacion/clima-geolocalizacion.module').then( m => m.ClimaGeolocalizacionPageModule)
   },
   {
-    path: 'crear-conductor',
-    loadChildren: () => import('./pages/Side Menu/crear-conductor (Eliminar)/crear-conductor.module').then( m => m.CrearConductorPageModule)
-  },
-  {
     path: 'menu-seleccion',
     loadChildren: () => import('./pages/login/menu-seleccion/menu-seleccion.module').then( m => m.MenuSeleccionPageModule)
   },
